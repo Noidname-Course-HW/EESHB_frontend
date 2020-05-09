@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <title>二手書網站</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+    h1{
+        color:#008b8b;
+    }
+    </style>    
+</head>
+
+<body>
+<h1>電機二手書買賣平台</h1>
+<div>
+    <button id="btn0">
+        簡介
+    </button>
+</div>
+<div>
+<button id="btn1">
+ 我要賣書
+</button>
+<button id="btn2">
+我要買書
+</button>
+</div>
+<style type="text/css">
+#btn0{
+    margin:auto;
+    border:1px black solid;
+    width:100px;
+    height:20px;
+    display: inline-block;
+}
+#btn1{
+    border:1px black solid;
+    width:100px;
+    height:100px;
+    display: inline-block;
+}
+#btn2{
+    border:1px black solid;
+    width:100px;
+    height:100px;
+    display: inline-block;
+}
+#form1{
+    display: inline;
+}
+#h1{
+    display: inline;
+}
+</style>
+
+<script language="JavaScript">
+    function ShowTime(){
+    　document.getElementById('showbox').innerHTML = new Date();
+    　setTimeout('ShowTime()',1000);
+    }
+    </script>
+    <body onload="ShowTime()">
+    <div id="showbox"></div>
+    </body>
+<!-- <script src="hi.js"></script> -->
+</body>
+</html>
