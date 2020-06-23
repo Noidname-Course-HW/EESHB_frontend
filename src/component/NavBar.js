@@ -6,13 +6,14 @@ import BuyBook_icon from '../image/BuyBook_icon.png';
 import SellBook_icon from '../image/SellBook_icon.png';
 import feedback_icon from '../image/feedback_icon.png';
 import Login_icon from '../image/Login_icon.png';
+import logo from '../image/logo.png';
 const NavBar = () =>{
     return(
         <div id="NavBar_container">
-            <ul>
+            <ul className="NavBar_ul">
                 <li className="NavBar_li">
                     <Link to="/Home">
-                        <img src={home_icon} alt="home_icon"/>
+                        <img src={logo} alt="alt" id="NavBar_logo"/>
                         <p style={{color:"#FFB8BA"}}>Home</p>
                     </Link>
                 </li>

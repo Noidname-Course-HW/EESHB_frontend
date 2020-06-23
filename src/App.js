@@ -7,6 +7,7 @@ import Login from './Login';
 import SellBook from './SellBook';
 import BuyBook from './BuyBook';
 import FeedBack from './FeedBack';
+import FillSuccess from './FillSuccess';
 
 const App = () =>{
   return(
@@ -18,6 +19,7 @@ const App = () =>{
       <Route path="/BuyBook" component={BuyBook}/>
       <Route path="/Login" component={Login}/>
       <Route path="/FeedBack" component={FeedBack}/>
+      <Route path="/FillSuccess" component={FillSuccess}/>
       </div>
     </div>
   )
