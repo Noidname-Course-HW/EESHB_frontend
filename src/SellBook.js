@@ -86,7 +86,7 @@ class SellBook extends Component {
                     </div>
                 {/* 還沒限制字數 */}
                     <div>
-                    <input className="SellBook_box_input" type="text" id="fname" name="firstname"  maxlength="9" required="required" onChange={this.handleInputChange}/>
+                    <input className="SellBook_box_input" type="text" id="fname" name="firstname"  maxlength="9" required="required" onChange={this.handleInputChange} placeholder="ex:王"/>
                     <span className="separator"></span>
                     </div>
                 </li>
@@ -96,7 +96,7 @@ class SellBook extends Component {
                     <span className="separator"></span>
                     </div>
                     <div>
-                    <input className="SellBook_box_input" type="text" id="lname" name="lastname"  maxlength="9" required="required" onChange={this.handleInputChange}/>
+                    <input className="SellBook_box_input" type="text" id="lname" name="lastname"  maxlength="9" required="required" onChange={this.handleInputChange} placeholder="ex:小明"/>
                     <span className="separator"></span>
                     </div>
                 </li>
@@ -106,7 +106,7 @@ class SellBook extends Component {
                     <span className="separator"></span>
                     </div>
                     <div>
-                    <input className="SellBook_box_input" type="text" id="lname" name="stuid"  maxlength="9" required="required" onChange={this.handleInputChange}/>
+                    <input className="SellBook_box_input" type="text" id="lname" name="stuid"  maxlength="9" required="required" onChange={this.handleInputChange} placeholder="ex:b08900000"/>
                     <span className="separator"></span>
                     </div>
                 </li>
@@ -174,7 +174,7 @@ class SellBook extends Component {
                     <span class="separator"></span>
                     </div>
                     <div>
-                    <input className="SellBook_box_input" type="text" name="others" size="70" maxlength="70" onChange={this.handleInputChange}/>
+                    <input className="SellBook_box_input" type="text" name="others" size="70" maxlength="70" onChange={this.handleInputChange} placeholder="請大略說明書況等相關信息"/>
                     <span class="separator"></span>
                     </div>
                 {/* 不知圖片怎麼找*/}

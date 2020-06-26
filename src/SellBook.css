@@ -43,7 +43,7 @@ li,ul{
     background-color: transparent;
     border-width:0;
     /* border-style: dashed; */
-    
+    font-family:'Noto Sans TC',Arial,sans-serif;
 }
 
 .SellBook_box_select{

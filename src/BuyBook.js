@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import Select from "./component/Select";
 import Rolling_Number from './component/Rolling_Number'
 import './BuyBook.css'
+const categories_subjects = {
+    "大一必修":["交換電路與邏輯設計", "計算機程式設計", "生物科學通論", "普通化學丙", "普通物理學甲", "微積分甲上下"],
+    "大二必修":["電子學(一)", "電磁學(一)", "工程數學-線性代數", "工程數學-微分方程"],
+    "複選必修":["資料結構", "演算法"],
+    "選修":["工程數學-離散數學", "工程數學-複變"],
+    "其他選修":["無"]
+}
 const BuyBook = () =>{
     // let subjects = {
     //     'subject1':true,
@@ -14,23 +21,45 @@ const BuyBook = () =>{
         "500":0,
         "700":0
     })
-    const subject=[
-        "Calculus","Electric Circuits","Physics","Switching Circuits and Logic Design"
-    ]
+
+    const [category,setCategory] = useState(
+        ""
+    )
+    const [subject,setSubject] = useState(
+        ""
+    )
+    // const subjects=[
+    //     "Calculus","Electric Circuits","Physics","Switching Circuits and Logic Design"
+    // ]
+    const handleSelectChange = (dataname,option) => {
+        if(dataname==="category"){
+            setCategory(option)
+        }else if (dataname==="subject"){
+            setSubject(option)
+        }
+    }
     return(
         <div id="BuyBook_container">
             <h1 id="h1">選擇科目</h1>
-            <div id="BuyBook_search_bar">
-                <form id="form1">
-                    <Select id="BuyBook" defaultOption="Choose an Option" options={subject}/>
+            <form id="form1">
+            <div id="BuyBook_search_bar_category" className="BuyBook_search_bar">
+                
+                    <Select id="BuyBook_categories" defaultOption="Choose Your Grade " options={Object.keys(categories_subjects)} conn={handleSelectChange} dataname="category"/>
+                    
+                   {/* <Select id="Sellbook_category" className="SellBook_box_select" dataname="category" conn={this.handleChildCurrentOptionChange} defaultOption="Please Choose a category" options={Object.keys(categories_subjects)}/>
+                   <Select id="Sellbook_subject" className="SellBook_box_select" dataname="subject" conn={this.handleChildCurrentOptionChange} defaultOption="Please Choose a category_first" options={categories_subjects[this.state.data.category]?categories_subjects[this.state.data.category]:[]}/> */}
                     {/* <select name="YourLocation">
                     　<option value="1">電路學</option>
                     　<option value="2">微積分</option>
                     　<option value="3">普通物理學</option>
                     </select> */}
             
-                </form>
+                
             </div> 
+            <div id="BuyBook_search_bar_subject" className="BuyBook_search_bar">
+                <Select id="BuyBook_subjects" defaultOption="Choose Your Grade First" options={categories_subjects[category]?categories_subjects[category]:[]} conn={handleSelectChange} dataname="subject"/>
+            </div>
+            </form>
                 <div id="BuyBook_box">
                 <div id="BuyBook_200" class="BuyBook_price">
                     $200
