@@ -3,6 +3,7 @@ import Select from "./component/Select";
 import Rolling_Number from './component/Rolling_Number'
 import axios from 'axios';
 import './BuyBook.css'
+import Axios from 'axios';
 const categories_subjects = {
     "大一必修":["交換電路與邏輯設計", "計算機程式設計", "生物科學通論", "普通化學丙", "普通物理學甲", "微積分甲上下"],
     "大二必修":["電子學(一)", "電磁學(一)", "工程數學-線性代數", "工程數學-微分方程"],

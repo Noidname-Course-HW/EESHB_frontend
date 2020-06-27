@@ -81,32 +81,23 @@ class SellBook extends Component {
             <ul id="SellBook_main_ul">
                 <li className="SellBook_li">
                     <div>
-                    <label for="fname">First name:</label>
+                    <label for="fname">name:</label>
                     <span className="separator"></span>
                     </div>
                 {/* 還沒限制字數 */}
                     <div>
-                    <input className="SellBook_box_input" type="text" id="fname" name="firstname"  maxlength="9" required="required" onChange={this.handleInputChange} placeholder="ex:王"/>
+                    <input className="SellBook_box_input" type="text" id="name" name="name"  maxlength="9" required="required" onChange={this.handleInputChange} placeholder="ex:王"/>
                     <span className="separator"></span>
                     </div>
                 </li>
+                
                 <li className="SellBook_li">
                     <div>
-                    <label for="lname">Last name:</label>
+                    <label for="stdId">Student ID:</label>
                     <span className="separator"></span>
                     </div>
                     <div>
-                    <input className="SellBook_box_input" type="text" id="lname" name="lastname"  maxlength="9" required="required" onChange={this.handleInputChange} placeholder="ex:小明"/>
-                    <span className="separator"></span>
-                    </div>
-                </li>
-                <li className="SellBook_li">
-                    <div>
-                    <label for="stuid">Student ID:</label>
-                    <span className="separator"></span>
-                    </div>
-                    <div>
-                    <input className="SellBook_box_input" type="text" id="lname" name="stuid"  maxlength="9" required="required" onChange={this.handleInputChange} placeholder="ex:b08900000"/>
+                    <input className="SellBook_box_input" type="text" id="stdId" name="stdId"  maxlength="9" required="required" onChange={this.handleInputChange} placeholder="ex:b08900000"/>
                     <span className="separator"></span>
                     </div>
                 </li>
@@ -134,16 +125,7 @@ class SellBook extends Component {
                     ["工程數學-離散數學", "工程數學-複變"]; 
                     </select> */}
                 </li>
-                <li className="SellBook_li">
-                    <div>
-                        <label>數量</label>
-                        <span className="separator"></span>
-                    </div>
-                    <div>
-                    <input className="SellBook_box_input" type="number" name="amount" min="1" require="required" onChange={this.handleInputChange}/>
-                    <span className="separator"></span>
-                    </div>
-                </li>
+                
                 <li>書價：
                     {/* <ul>
                     <li>200元<input type="radio" name="price" value="200"/></li>
