@@ -28,23 +28,24 @@ const BuyBook = () =>{
         ""
     )
     const [subject,setSubject] = useState(
-        ""
+        "Default"
     )
     const [dataFromBackEnd,setDataFromBackEnd] = useState({
-        "交換電路與邏輯設計":[],
-        "計算機程式設計":[], 
-        "生物科學通論":[], 
-        "普通化學丙":[], 
-        "普通物理學甲":[],
-        "微積分甲上下":[],
-        "電子學(一)":[],
-        "電磁學(一)":[], 
-        "工程數學-線性代數":[], 
-        "工程數學-微分方程":[],
-        "資料結構":[], 
-        "演算法":[],
-        "工程數學-離散數學":[], 
-        "工程數學-複變":[]
+        "Default":[0,0,0,0],
+        "交換電路與邏輯設計":[1,2,3,4],
+        "計算機程式設計":[0,0,0,0], 
+        "生物科學通論":[0,0,0,0], 
+        "普通化學丙":[0,0,0,0], 
+        "普通物理學甲":[0,0,0,0],
+        "微積分甲上下":[0,0,0,0],
+        "電子學(一)":[0,0,0,0],
+        "電磁學(一)":[0,0,0,0], 
+        "工程數學-線性代數":[0,0,0,0], 
+        "工程數學-微分方程":[0,0,0,0],
+        "資料結構":[0,0,0,0], 
+        "演算法":[0,0,0,0],
+        "工程數學-離散數學":[0,0,0,0], 
+        "工程數學-複變":[0,0,0,0]
     })
     // const subjects=[
     //     "Calculus","Electric Circuits","Physics","Switching Circuits and Logic Design"
@@ -56,14 +57,14 @@ const BuyBook = () =>{
             setSubject(option)
         }
     }
-    useEffect(() => {
-        axios.post('http://localhost:100/backEnd/buyBook.php',{})
-        .then(function(data){
-            setDataFromBackEnd(data);
-        }).catch(function (error) {
-                console.log(error);
-            });
-    },[])
+    // useEffect(() => {
+    //     axios.post('http://localhost:100/backEnd/buyBook.php',{})
+    //     .then(function(data){
+    //         setDataFromBackEnd(data);
+    //     }).catch(function (error) {
+    //             console.log(error);
+    //         });
+    // },[])
     return(
         <div id="BuyBook_container">
             <h1 id="h1">選擇科目</h1>
