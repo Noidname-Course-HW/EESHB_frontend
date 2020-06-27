@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Select from "./component/Select";
 import Rolling_Number from './component/Rolling_Number'
+import axios from 'axios';
 import './BuyBook.css'
 const categories_subjects = {
     "大一必修":["交換電路與邏輯設計", "計算機程式設計", "生物科學通論", "普通化學丙", "普通物理學甲", "微積分甲上下"],
@@ -15,12 +16,12 @@ const BuyBook = () =>{
     //     'subject2':true,
     //     'subject3':true,
     // }
-    const [book_num, setBookNum] = useState({
-        "200":0,
-        "300":0,
-        "500":0,
-        "700":0
-    })
+    // const [book_num, setBookNum] = useState({
+    //     "200":0,
+    //     "300":0,
+    //     "500":0,
+    //     "700":0
+    // })
 
     const [category,setCategory] = useState(
         ""
@@ -28,6 +29,22 @@ const BuyBook = () =>{
     const [subject,setSubject] = useState(
         ""
     )
+    const [dataFromBackEnd,setDataFromBackEnd] = useState({
+        "交換電路與邏輯設計":[],
+        "計算機程式設計":[], 
+        "生物科學通論":[], 
+        "普通化學丙":[], 
+        "普通物理學甲":[],
+        "微積分甲上下":[],
+        "電子學(一)":[],
+        "電磁學(一)":[], 
+        "工程數學-線性代數":[], 
+        "工程數學-微分方程":[],
+        "資料結構":[], 
+        "演算法":[],
+        "工程數學-離散數學":[], 
+        "工程數學-複變":[]
+    })
     // const subjects=[
     //     "Calculus","Electric Circuits","Physics","Switching Circuits and Logic Design"
     // ]
@@ -38,6 +55,14 @@ const BuyBook = () =>{
             setSubject(option)
         }
     }
+    useEffect(() => {
+        axios.post('http://localhost:100/backEnd/buyBook.php',{})
+        .then(function(data){
+            setDataFromBackEnd(data);
+        }).catch(function (error) {
+                console.log(error);
+            });
+    },[])
     return(
         <div id="BuyBook_container">
             <h1 id="h1">選擇科目</h1>
@@ -63,22 +88,22 @@ const BuyBook = () =>{
                 <div id="BuyBook_box">
                 <div id="BuyBook_200" class="BuyBook_price">
                     $200
-                    <Rolling_Number price="200" num={book_num['200']}/>
+                    <Rolling_Number price="200" num={dataFromBackEnd[subject][0]?dataFromBackEnd[subject][0]:0}/>
                     <span className="Rolling_Number_text">本</span>
                 </div>
                 <div id="BuyBook_300" class="BuyBook_price">
                     $300
-                    <Rolling_Number price="300" num={book_num['300']}/>
+                    <Rolling_Number price="300" num={dataFromBackEnd[subject][1]?dataFromBackEnd[subject][1]:0}/>
                     <span className="Rolling_Number_text">本</span>
                 </div>
                 <div id="BuyBook_500" class="BuyBook_price">
                     $500
-                    <Rolling_Number price="500" num={book_num['500']}/>
+                    <Rolling_Number price="500" num={dataFromBackEnd[subject][2]?dataFromBackEnd[subject][2]:0}/>
                     <span className="Rolling_Number_text">本</span>
                 </div>
                 <div id="BuyBook_700" class="BuyBook_price">
                     $700
-                    <Rolling_Number price="700" num={book_num['700']}/>
+                    <Rolling_Number price="700" num={dataFromBackEnd[subject][3]?dataFromBackEnd[subject][3]:0}/>
                     <span className="Rolling_Number_text">本</span>
                 </div>
                 {/* <p>     200元  x本</p>

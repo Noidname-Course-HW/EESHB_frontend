@@ -51,7 +51,7 @@ class SellBook extends Component {
     insertUser = (event) => {
         event.preventDefault();
         event.persist();
-        Axios.post('http://localhost/php-react/add-user.php', 
+        Axios.post('http://localhost:100/backEnd/backEndSeller.php', 
             this.state.data
         )
             .then(function ({ data }) {
