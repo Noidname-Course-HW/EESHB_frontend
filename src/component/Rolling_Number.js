@@ -6,7 +6,9 @@ const Rolling_Number = (props) =>{
     const readNum = () =>{
         let rolling_num = document.getElementById("Rolling_Number_num"+props.price)
         if(rolling_num){
-        rolling_num.style.top = "-"+(8+89*(props.num))+"px";
+        let height = rolling_num.offsetHeight
+        // console.log(height)
+        rolling_num.style.top = "-"+(8+(height/10)*(props.num))+"px";
         }
     }
     // useEffect(() => {
