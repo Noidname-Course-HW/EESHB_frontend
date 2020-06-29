@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Home from './Home';
+import {Route} from 'react-router-dom';
 //import * as serviceWorker from './serviceWorker';
 import {BrowserRouter,Switch} from 'react-router-dom'
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
+    <Route path="/Home" component={Home}/>
       <App/>
     </Switch>
   </BrowserRouter>
