@@ -28,7 +28,7 @@ const BuyBook = () =>{
         ""
     )
     const [subject,setSubject] = useState(
-        "Default"
+        "微積分甲上下"
     )
     const [dataFromBackEnd,setDataFromBackEnd] = useState({
         "Default":[0,0,0,0],
@@ -57,14 +57,18 @@ const BuyBook = () =>{
             setSubject(option)
         }
     }
-    // useEffect(() => {
-    //     axios.post('http://localhost:100/backEnd/buyBook.php',{})
-    //     .then(function(data){
-    //         setDataFromBackEnd(data);
-    //     }).catch(function (error) {
-    //             console.log(error);
-    //         });
-    // },[])
+     useEffect(() => {
+         axios.post('http://localhost:100/backEnd/buyBook.php',{})
+             .then(function (data) {
+                 console.log(subject)
+                 console.log(data.data)
+                 console.log(data.data[subject])
+                 setDataFromBackEnd(data.data);
+                 
+         }).catch(function (error) {
+                 console.log(error);
+            });
+     },[])
     return(
         <div id="BuyBook_container">
             <h1 id="h1">選擇科目</h1>

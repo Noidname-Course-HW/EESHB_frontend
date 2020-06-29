@@ -49,24 +49,37 @@ class SellBook extends Component {
     }
 
     insertUser = (event) => {
+
+        
         event.preventDefault();
         event.persist();
         Axios.post('http://localhost:100/backEnd/backEndSeller.php', 
             this.state.data
+            
         )
+        
             .then(function ({ data }) {
+                
+
                 if (data.success === 1) {
                     //this.context.addNewUser(data.id, this.username.value, this.useremail.value);
                     //event.target.reset();
-                    alert(data.msg);
+                    
+                    console.log(data)
+                    alert(data.msg)
+                    
                 }
                 else {
+                    console.log(data)
                     alert(data.msg);
+                    
+                    
                 }
             })
             .catch(function (error) {
                 console.log(error);
             });
+            
     }
     // componentDidUpdate(){
     //     console.log(
