@@ -28,7 +28,7 @@ const App = () =>{
     console.log(isLogin)
     setIslogin(isLogin)
 	localStorage.setItem('auth',true);
-	if(isLogin) window.location = "/in";
+	if(isLogin) window.location = "/manage";
     console.log('App isLogin = ',this.state.isLogin)
   }
   return(

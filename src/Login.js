@@ -29,7 +29,7 @@ const Login = (props) =>{
 		//this.props.loginFunc(isLogin);
 		if(isLogin){
 			localStorage.setItem('auth',true);
-			window.location = 'in';
+            window.location = 'manage';
 		}
 	}
     const handleSubmit = (e) => {
@@ -41,7 +41,7 @@ const Login = (props) =>{
             
         }).then(
             function(data){
-                if(data.success === 1){
+                if(data.data.success === 1){
 
                     alert("Login Success!")
                     setLoginstate(true)
@@ -78,7 +78,7 @@ const Login = (props) =>{
                     <span className="separator"></span>
                     </div>
                     <input type="submit" id="Login_submit" value="Login" onSubmit={handleSubmit}></input>
->>>>>>> 78b6547927d40f1f1cbf9b7921bf071e1e1da6d5
+
                 </div>
     
                 </form>
