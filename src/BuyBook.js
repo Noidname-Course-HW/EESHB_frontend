@@ -31,7 +31,7 @@ const BuyBook = () =>{
     )
     const [dataFromBackEnd,setDataFromBackEnd] = useState({
         "Default":[0,0,0,0],
-        "交換電路與邏輯設計":[1,2,3,4],
+        "交換電路與邏輯設計":[0,0,0,0],
         "計算機程式設計":[0,0,0,0], 
         "生物科學通論":[0,0,0,0], 
         "普通化學丙":[0,0,0,0], 
@@ -57,7 +57,7 @@ const BuyBook = () =>{
         }
     }
      useEffect(() => {
-         axios.post('http://localhost:100/backEnd/buyBook.php',{})
+         axios.post('http://localhost:100/backEnd/buyBookPage.php',{})
              .then(function (data) {
                  console.log(subject)
                  console.log(data.data)
