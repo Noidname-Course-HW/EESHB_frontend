@@ -1,0 +1,10 @@
+#Comment_section_container{
+    height:80%;
+    width:50%;
+}
+
+#Comment_section_textarea{
+    position: fixed;
+
+    bottom: 5%;
+}

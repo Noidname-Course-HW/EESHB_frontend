@@ -1,7 +1,6 @@
 import React from 'react';
 import './NavBar.css';
 import {Link} from 'react-router-dom'
-import home_icon from '../image/home_icon.png';
 import BuyBook_icon from '../image/BuyBook_icon.png';
 import SellBook_icon from '../image/SellBook_icon.png';
 import feedback_icon from '../image/feedback_icon.png';
@@ -12,7 +11,7 @@ const NavBar = () =>{
         <div id="NavBar_container">
             <ul className="NavBar_ul">
                 <li className="NavBar_li">
-                    <Link to="/Home">
+                    <Link to="/">
                         <img src={logo} alt="alt" id="NavBar_logo"/>
                         <p style={{color:"#FFB8BA"}}>Home</p>
                     </Link>
