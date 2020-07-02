@@ -70,7 +70,8 @@ const BuyBook = () =>{
      },[])
     return(
         <div id="BuyBook_container">
-            <h1 id="h1">選擇科目</h1>
+            {/* <h1 id="h1">選擇科目</h1> */}
+            <h1 id="h1">剩餘書籍</h1>
             <form id="form1">
             <div id="BuyBook_search_bar_category" className="BuyBook_search_bar">
                 

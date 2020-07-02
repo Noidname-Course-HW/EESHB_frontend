@@ -16,7 +16,7 @@ const FillSuccess = (props) => {
                 並在{time}將書拿至{place}<br/>
                 同時準備{money}元手續費<br/>
             </p>
-            <Link to="Home"><button>Back Home</button></Link>
+            <Link to="/SellBook"><button>Back Home</button></Link>
         </div>
     )
 }

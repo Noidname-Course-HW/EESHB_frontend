@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Select from './component/Select';
 import Axios from 'axios';
 import './SellBook.css';
+import { Redirect } from 'react-router';
 const categories_subjects = {
     "大一必修":["交換電路與邏輯設計", "計算機程式設計", "生物科學通論", "普通化學丙", "普通物理學甲", "微積分甲上下"],
     "大二必修":["電子學(一)", "電磁學(一)", "工程數學-線性代數", "工程數學-微分方程"],
@@ -14,8 +15,7 @@ class SellBook extends Component {
         super(props)
         this.state={
             data:{
-                firstname:'',
-                lastname:'',
+                name:'',
                 stuid:'',
                 category:'',
                 subject:'',
@@ -67,6 +67,8 @@ class SellBook extends Component {
                     
                     console.log(data)
                     alert(data.msg)
+
+                    return <Redirect to="/FillSuccess"/>
                     
                 }
                 else {
@@ -89,6 +91,7 @@ class SellBook extends Component {
     render() {
         return(
             <div id="SellBook_container">
+                <h1 id="h1">填寫賣書表單</h1>
             <div id="SellBook_box">
             <form onSubmit={this.insertUser}>
             <ul id="SellBook_main_ul">
@@ -178,7 +181,7 @@ class SellBook extends Component {
                     驗證碼：<div><img src="" id="captcha"/></div> 
                 </li>
                 <li>
-                <input type="checkbox" name="condition" require="required"/>我已同意二手書網站條款<br/><br/><br/>
+                <input id="SellBook_checkbox" type="checkbox" name="condition" require="required"/>我已同意二手書網站條款
                 </li>
                 {/* <input type="submit" value="送出表單" onSubmit={this.insertUser}/> */}
                 </ul>
