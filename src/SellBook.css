@@ -19,7 +19,7 @@ li,ul{
 }
 #SellBook_box{
     width:50vw;
-    height: 70vh;
+    height: 75%;
     
     color: whitesmoke;
     position: absolute;
@@ -97,6 +97,9 @@ li,ul{
     /* display: inline-block; */
     
 }
+#SellBook_box_others{
+    width:40vw;
+}
 
 #SellBook_submit_btn{
     /* border-style: none; */
@@ -119,9 +122,14 @@ li,ul{
     border: none;
 }
 
-#SellBook_checkbox{
-    margin-left:calc(50% - 10em);
-    
+#SellBook_checkbox_li{
+    position: absolute;
+    left:calc(50% - 6.25em);
+    bottom: 10%;
+
+}
+
+#SellBook_checkbox_li input{
     width:1.5em;
     height:1.5em;
 }

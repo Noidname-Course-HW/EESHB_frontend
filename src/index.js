@@ -10,8 +10,8 @@ import {BrowserRouter,Switch} from 'react-router-dom'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
-    // localStorage.getItem('auth')
-    true
+    localStorage.getItem('auth')
+    // true
       ? <Component {...props} />
       : <Redirect to={{
           pathname: '/Login',
