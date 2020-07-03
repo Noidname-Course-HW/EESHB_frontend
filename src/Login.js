@@ -10,19 +10,19 @@ const Login = (props) =>{
         let name = e.target.name;
         let value = e.target.value;
         if (name === "password"){
-            console.log(value)
+            //console.log(value)
             setPassword(value)
             
         }
         else if(name === "username"){
-            console.log(value)
+            //console.log(value)
             setUsername(value)
         }
 
         
     }
     const handleLogin = (isLoginorNot) =>{
-		console.log("handleLogin");
+		//console.log("handleLogin");
 		let isLogin = isLoginorNot;
 		//console.log('111114hroipsfjiweffberb     '+typeof(this.props.loginFunc))
 		//console.log(this.props);
@@ -47,7 +47,7 @@ const Login = (props) =>{
                     setLoginstate(true)
                     handleLogin(true)
                 }else{
-                    console.log(data);
+                    //console.log(data);
                     alert("Login Denied!")
                     setLoginstate(false)
                     handleLogin(false)

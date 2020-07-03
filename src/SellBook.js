@@ -22,6 +22,7 @@ class SellBook extends Component {
                 amount:'',
                 others:''
             },
+            captcha:''
 
         }
     }
@@ -53,6 +54,12 @@ class SellBook extends Component {
         
         event.preventDefault();
         event.persist();
+        Axios.post('http://localhost:100/backEnd/captcha/checkcode.php',
+        {"captcha":this.state.captcha}).then(
+            function(data){
+                console.log(data);
+            }
+        )
         Axios.post('http://localhost:100/backEnd/backEndSeller.php', 
             this.state.data
             
@@ -83,11 +90,20 @@ class SellBook extends Component {
             });
             
     }
+
+    refresh_code = (e) => {
+        e.target.src = "http://localhost:100/backEnd/captcha/captcha.php"
+    }
     // componentDidUpdate(){
     //     console.log(
     //         categories_subjects[this.state.data.category]
     //     )
     // }
+    handleCaptchaChange = (e) => {
+        this.setState({
+            captcha:e.target.value
+        },console.log(this.state))
+    }
     render() {
         return(
             <div id="SellBook_container">
@@ -172,16 +188,28 @@ class SellBook extends Component {
                     <span class="separator"></span>
                     </div>
                     <div>
-                    <input className="SellBook_box_input" type="text" name="others" size="70" maxlength="70" onChange={this.handleInputChange} placeholder="請大略說明書況等相關信息"/>
+                    <input className="SellBook_box_input" id="SellBook_box_others" type="text" name="others" maxlength="70" onChange={this.handleInputChange} placeholder="請大略說明書況等相關信息"/>
                     <span class="separator"></span>
                     </div>
-                {/* 不知圖片怎麼找*/}
                 </li>
                 <li>
-                    驗證碼：<div><img src="" id="captcha"/></div> 
+                    <div>
+                    <label>驗證碼</label>
+                    
+                    </div>
+                    <div style={{float:"right"}}>
+                    <input id="SellBook_captcha" className="SellBook_box_input" required="required" name="captcha" onChange={this.handleCaptchaChange} placeholder="請輸入驗證碼"/>
+                    <span class="separator"></span>
+                    </div>
+                    <div>
+                        <img src="http://localhost:100/backEnd/captcha/captcha.php" alt="captcha" onClick={this.refresh_code}/>
+                        <span class="separator"></span>
+                        <p style={{fontSize:"16px"}}>看不清楚? 點擊圖片換下一張</p>
+                    </div> 
+                    
                 </li>
-                <li>
-                <input id="SellBook_checkbox" type="checkbox" name="condition" require="required"/>我已同意二手書網站條款
+                <li id="SellBook_checkbox_li">
+                <input  type="checkbox" name="condition" require="required" value="1"/>我已同意二手書網站條款
                 </li>
                 {/* <input type="submit" value="送出表單" onSubmit={this.insertUser}/> */}
                 </ul>
