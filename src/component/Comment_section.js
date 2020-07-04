@@ -8,13 +8,15 @@ import Comment from './Comment'
                                 ...]*/
 const Comment_section = (props) => {
     //const [comments,setComments] = useState([])
+    
     const [text, setText] = useState("")
+    const [comments, setComments] = useState([]);
     
     
-    useEffect(() => {
-        // handleSubmit()
-        renderComments()
-    },[])
+    // useEffect(() => {
+    //     // handleSubmit()
+    //     renderComments()
+    // },[])
 
     
     const handleInputChange = (e) => {
@@ -23,7 +25,8 @@ const Comment_section = (props) => {
         console.log(text)
     }
     const handleSubmit = (e) => {
-        axios.post('',{
+        e.preventDefault()
+        axios.post('http://localhost:100/backEnd/feedback.php',{
             comment: text,
             reply: ""
         }).then(function(data){
@@ -39,7 +42,7 @@ const Comment_section = (props) => {
         })
     }
     const renderComments = () => {
-        axios.post('',{})
+        axios.post('http://localhost:100/backEnd/feedback.php',{})
             .then(function (data) {
                 if(data.success===1){
                     console.log(data.data)
@@ -50,25 +53,43 @@ const Comment_section = (props) => {
                         comments_list.push(<Comment id={"Comment_"+count} comment={comment.comment} reply={comment.reply?comment.reply:""}></Comment>)
                         count = count + 1
                     }
+
+                    setComments(comments_list)
                     //setComments(data.data)
-                    return(
-                        <div id="Comment_section_container">
-                            {comments_list}
-                            <form onSubmit={handleSubmit}>
-                                <textarea id="Comment_section_textarea" onChange={handleInputChange}></textarea>
-                                <input type="submit" value="submit" onSubmit={handleSubmit}></input>
-                            </form>
-                        </div>
-                    )
+                    // return(
+                    //     <div id="Comment_section_container">
+                    //         {comments_list}
+                    //         <form onSubmit={handleSubmit}>
+                    //             <textarea id="Comment_section_textarea" onChange={handleInputChange}></textarea>
+                    //             <input type="submit" value="submit" onSubmit={handleSubmit}></input>
+                    //         </form>
+                    //     </div>
+                    //)
                 }else{
                     console.log(data)
+                    // return(
+                    //     <div id="Comment_section_container">
+                    //         {/* {comments_list} */}
+                    //         <form onSubmit={handleSubmit}>
+                    //             <textarea id="Comment_section_textarea" onChange={handleInputChange}></textarea>
+                    //             <input type="submit" value="submit" onSubmit={handleSubmit}></input>
+                    //         </form>
+                    //     </div>
+                    // )
                 }
                 
         }).catch(function (error) {
                 console.log(error);
+                // return(
+                //     <div>
+                //         error
+                //     </div>
+                // )
            });
-    }
 
+    
+    }
+    
     // const renderComments = () => {
     //     let comments_list = []
     //     let count = 1
@@ -85,6 +106,16 @@ const Comment_section = (props) => {
     //             </form>
     //         </div>
     //     )
+    return(
+        
+                <div id="Comment_section_container">
+                    {comments}
+                    <form onSubmit={handleSubmit}>
+                        <textarea id="Comment_section_textarea" onChange={handleInputChange}></textarea>
+                        <input type="submit" value="submit" onSubmit={handleSubmit}></input>
+                    </form>
+                </div>
+    )
     }
     
 
