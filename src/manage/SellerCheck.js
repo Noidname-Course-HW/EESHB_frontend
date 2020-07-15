@@ -21,6 +21,14 @@ class SellerCheck extends Component {
         }
 
     }
+
+    fetchData = () => {
+        //TODO
+    }
+
+    renderStatusBar = (data) => {
+        //TODO
+    }
     
     handleSellerStateChange = (stuid,newstate) =>{
         let new_object = this.state.sellers

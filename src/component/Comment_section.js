@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react';
 import './Comment_section.css'
 import axios from 'axios'
 import Comment from './Comment'
+import send from '../image/send.png'
+import Scrollbars from "react-custom-scrollbars";
 
 /*comments form = [{comment:comment1,
                     reply:reply1},
@@ -13,10 +15,10 @@ const Comment_section = (props) => {
     const [comments, setComments] = useState([]);
     
     
-    // useEffect(() => {
-    //     // handleSubmit()
-    //     renderComments()
-    // },[])
+    useEffect(() => {
+        // handleSubmit()
+        renderComments()
+    },[])
 
     
     const handleInputChange = (e) => {
@@ -31,8 +33,8 @@ const Comment_section = (props) => {
             reply: ""
         }).then(function(data){
             console.log(data)
-            if(data.success === 1){
-                alert("訊息已送達")
+            if(data.data.success === 1){
+                // alert("訊息已送達")
                 renderComments()
             }else{
                 alert("Something's wrong")
@@ -42,77 +44,57 @@ const Comment_section = (props) => {
         })
     }
     const renderComments = () => {
-        axios.post('http://localhost:100/backEnd/feedback.php',{})
+        axios.post('http://localhost:100/backEnd/showFeedback.php',{})
             .then(function (data) {
-                if(data.success===1){
+                if(data.data.success===1){
                     console.log(data.data)
                     
                     let comments_list = []
-                    let count = 1
-                    for (let comment in data.data){
-                        comments_list.push(<Comment id={"Comment_"+count} comment={comment.comment} reply={comment.reply?comment.reply:""}></Comment>)
-                        count = count + 1
+                    let all_comments = data.data.allComment;
+                    for  (let i=0; i<all_comments.length; i++){
+                        comments_list.push(<Comment id={"Comment_"+(i+1)} comment={all_comments[i].comment} reply={all_comments[i].reply?all_comments[i].reply:""} time={all_comments[i].reg_date}></Comment>)
                     }
 
                     setComments(comments_list)
-                    //setComments(data.data)
-                    // return(
-                    //     <div id="Comment_section_container">
-                    //         {comments_list}
-                    //         <form onSubmit={handleSubmit}>
-                    //             <textarea id="Comment_section_textarea" onChange={handleInputChange}></textarea>
-                    //             <input type="submit" value="submit" onSubmit={handleSubmit}></input>
-                    //         </form>
-                    //     </div>
-                    //)
                 }else{
                     console.log(data)
-                    // return(
-                    //     <div id="Comment_section_container">
-                    //         {/* {comments_list} */}
-                    //         <form onSubmit={handleSubmit}>
-                    //             <textarea id="Comment_section_textarea" onChange={handleInputChange}></textarea>
-                    //             <input type="submit" value="submit" onSubmit={handleSubmit}></input>
-                    //         </form>
-                    //     </div>
-                    // )
                 }
                 
         }).catch(function (error) {
                 console.log(error);
-                // return(
-                //     <div>
-                //         error
-                //     </div>
-                // )
            });
 
     
     }
-    
-    // const renderComments = () => {
-    //     let comments_list = []
-    //     let count = 1
-    //     for (let comment in comments){
-    //         comments_list.push(<Comment id={"Comment_"+count} comment={comment.comment} reply={comment.reply?comment.reply:""}></Comment>)
-    //         count = count + 1
-    //     }
-    //     return(
-    //         <div id="Comment_section_container">
-    //             {comments_list}
-    //             <form onSubmit={}>
-    //                 <textarea id="Comment_section_textarea"></textarea>
-    //                 <input type="submit" value="submit" onSubmit={}></input>
-    //             </form>
-    //         </div>
-    //     )
+    const handleEnterSubmit = (e) => {
+        if (e.keyCode === 13){
+            handleSubmit(e)
+            e.target.value = ""
+            setText("");
+        }
+        
+    }
+    const renderThumb = ({ style, ...props }) => {
+        const thumbStyle = {
+        borderRadius: 6,
+        backgroundColor: 'rgba(192,192,200, 0.5)'
+        };
+        return <div style={{ ...style, ...thumbStyle }} {...props} />;
+    }
     return(
         
                 <div id="Comment_section_container">
-                    {comments}
-                    <form onSubmit={handleSubmit}>
-                        <textarea id="Comment_section_textarea" onChange={handleInputChange}></textarea>
-                        <input type="submit" value="submit" onSubmit={handleSubmit}></input>
+                    <div id="Comment_section_chatroom">
+                        <Scrollbars renderThumbVertical={renderThumb}>
+                        {comments}
+                        </Scrollbars>
+                    </div>
+                    <form onSubmit={handleSubmit} id="Comment_section_form">
+                        <textarea id="Comment_section_textarea" onChange={handleInputChange} onKeyUp={handleEnterSubmit}></textarea>
+                        {/* <input type="submit" value="submit"></input> */}
+                        <button id="Comment_section_submit_btn">
+                            <img src={send} alt="send" id="Comment_section_send_icon"/>
+                        </button>
                     </form>
                 </div>
     )

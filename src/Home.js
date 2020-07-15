@@ -13,6 +13,8 @@ import book from './image/book.png'
 import rules from './image/rules.png'
 import buybook from './image/BuyBook_home.png'
 import sellbook from './image/SellBook_home.png'
+import fb from './image/facebook.png'
+import email from './image/mail.png'
 
 const Home = () =>{
     const skipAnime = (e) => {
@@ -53,6 +55,18 @@ const Home = () =>{
                     <p>SellBook</p>
                 </div>
                 </Link>
+            </div>
+            <div id="Home_social_btn">
+                <a href="https://www.facebook.com/%E5%8F%B0%E5%A4%A7%E9%9B%BB%E6%A9%9F%E4%BA%8C%E6%89%8B%E6%9B%B8-EESHB-107805437660041/">
+                    <button className="Home_btn_anime Home_btns_div" id="Home_fb" >
+                        <img src={fb} alt="fb"/>
+                    </button>
+                </a>
+                <a href="mailto:ntueeshb@gmail.com">
+                    <button className="Home_btn_anime Home_btns_div" id="Home_email">
+                        <img src={email} alt="email"/>
+                    </button>
+                </a>
             </div>
         
         </div>

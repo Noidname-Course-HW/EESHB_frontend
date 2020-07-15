@@ -152,6 +152,27 @@
 .Home_btns_div:hover p{
     opacity: 1 !important;
 }
+#Home_social_btn{
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+}
+
+#Home_social_btn a>button>img{
+    height: 6vh;
+    width: 6vh;
+}
+#Home_social_btn button{
+    height:10vh;
+    width: 10vh;
+
+    border-color: transparent;
+    border-radius: 50%;
+    background: white;
+    margin-right: 1vh;
+    transition: all 0.5s;
+}
+
 @keyframes opening_anime {
     /* 0%{
         opacity: 0;
