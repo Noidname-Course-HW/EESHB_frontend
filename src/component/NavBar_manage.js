@@ -4,8 +4,14 @@ import {Link} from 'react-router-dom'
 import check from '../image/manage/check.png'
 import orders from '../image/manage/orders.png'
 import messege from '../image/manage/messege.png'
+import logout from '../image/manage/logout.png'
 
 const NavBar_manage = () => {
+
+    const handlelogout = (e) => {
+        e.preventDefault();
+        //TODO
+    }
     return(
         <div id="NavBar_manage_container">
             <ul className="NavBar_manage_ul">
@@ -28,6 +34,13 @@ const NavBar_manage = () => {
                         <p style={{color:"#FFFA94"}}>Reply</p>
                     </Link>
                 </li>
+                <li className="NavBar_manage_li">
+                    <button style={{backgroundColor:"transparent",border:"0"}}>
+                        <img src={logout} alt="logout" style={{marginLeft:"10px"}}/>
+                        <p style={{color:"#7BE88A"}}>Logout</p>
+                    </button>
+                </li>
+
                 {/* <li className="NavBar_manage_li">
                     <Link to="/BuyBook">
                         {/* <img src={} alt="buybook_icon"/> 

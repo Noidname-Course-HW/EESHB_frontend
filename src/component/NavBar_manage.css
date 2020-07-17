@@ -1,3 +1,7 @@
+button:focus{
+    outline: 0;
+}
+
 .NavBar_manage_ul{
     margin: 0;
     list-style: none;
